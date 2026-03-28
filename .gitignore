@@ -1,0 +1,20 @@
+# Visual Studio 관련
+.vs/
+*.sln
+*.vcxproj
+*.filters
+*.user
+
+# 빌드 결과물 및 임시 파일
+x64/
+Debug/
+Release/
+bin/
+obj/
+
+# Windows 전용 라이브러리 (직접 포함시킨 경우)
+include/SFML/
+lib/
+
+# CMake 빌드 폴더 (Linux/Windows 공통)
+build/

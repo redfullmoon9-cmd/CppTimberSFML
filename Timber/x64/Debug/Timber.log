@@ -1,7 +1,0 @@
-﻿  TimberMain.cpp
-D:\cNcpp\CppTimberSFML\Timber\TimberMain.cpp(211,38): warning C4244: '+=': conversion from 'double' to 'float', possible loss of data
-D:\cNcpp\CppTimberSFML\Timber\TimberMain.cpp(229,38): warning C4244: '+=': conversion from 'double' to 'float', possible loss of data
-D:\cNcpp\CppTimberSFML\Timber\TimberMain.cpp(345,19): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
-  Timber.vcxproj -> D:\cNcpp\CppTimberSFML\x64\Debug\Timber.exe
-  'pwsh.exe' is not recognized as an internal or external command,
-  operable program or batch file.
