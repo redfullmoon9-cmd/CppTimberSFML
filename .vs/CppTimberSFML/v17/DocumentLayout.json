@@ -1,0 +1,92 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "D:\\cNcpp\\CppTimberSFML\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{9BD86821-D1F1-499B-B3D4-2414F6B07201}|Timber\\Timber.vcxproj|D:\\cNcpp\\CppTimberSFML\\Timber\\TimberMain.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{9BD86821-D1F1-499B-B3D4-2414F6B07201}|Timber\\Timber.vcxproj|solutionrelative:Timber\\TimberMain.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9BD86821-D1F1-499B-B3D4-2414F6B07201}|Timber\\Timber.vcxproj|D:\\cNcpp\\CppTimberSFML\\Timber\\Header.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{9BD86821-D1F1-499B-B3D4-2414F6B07201}|Timber\\Timber.vcxproj|solutionrelative:Timber\\Header.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9BD86821-D1F1-499B-B3D4-2414F6B07201}|Timber\\Timber.vcxproj|D:\\cNcpp\\CppTimberSFML\\Timber\\TimberGame.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{9BD86821-D1F1-499B-B3D4-2414F6B07201}|Timber\\Timber.vcxproj|solutionrelative:Timber\\TimberGame.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9BD86821-D1F1-499B-B3D4-2414F6B07201}|Timber\\Timber.vcxproj|D:\\cNcpp\\CppTimberSFML\\Timber\\Timber.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{9BD86821-D1F1-499B-B3D4-2414F6B07201}|Timber\\Timber.vcxproj|solutionrelative:Timber\\Timber.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 2,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Header.h",
+              "DocumentMoniker": "D:\\cNcpp\\CppTimberSFML\\Timber\\Header.h",
+              "RelativeDocumentMoniker": "Timber\\Header.h",
+              "ToolTip": "D:\\cNcpp\\CppTimberSFML\\Timber\\Header.h",
+              "RelativeToolTip": "Timber\\Header.h",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAYAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2026-03-28T16:45:19.704Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "TimberMain.cpp",
+              "DocumentMoniker": "D:\\cNcpp\\CppTimberSFML\\Timber\\TimberMain.cpp",
+              "RelativeDocumentMoniker": "Timber\\TimberMain.cpp",
+              "ToolTip": "D:\\cNcpp\\CppTimberSFML\\Timber\\TimberMain.cpp",
+              "RelativeToolTip": "Timber\\TimberMain.cpp",
+              "ViewState": "AgIAAKEAAAAAAAAAAAAzwK8AAAAfAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2026-02-15T08:58:40.756Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "TimberGame.cpp",
+              "DocumentMoniker": "D:\\cNcpp\\CppTimberSFML\\Timber\\TimberGame.cpp",
+              "RelativeDocumentMoniker": "Timber\\TimberGame.cpp",
+              "ToolTip": "D:\\cNcpp\\CppTimberSFML\\Timber\\TimberGame.cpp",
+              "RelativeToolTip": "Timber\\TimberGame.cpp",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAEAAAATAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2026-02-15T08:58:02.372Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Timber.cpp",
+              "DocumentMoniker": "D:\\cNcpp\\CppTimberSFML\\Timber\\Timber.cpp",
+              "RelativeDocumentMoniker": "Timber\\Timber.cpp",
+              "ToolTip": "D:\\cNcpp\\CppTimberSFML\\Timber\\Timber.cpp",
+              "RelativeToolTip": "Timber\\Timber.cpp",
+              "ViewState": "AgIAAN8AAAAAAAAAAAAzwM4AAAAiAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2026-02-15T08:42:53.269Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
