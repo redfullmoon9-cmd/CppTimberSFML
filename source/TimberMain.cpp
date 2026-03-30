@@ -1,10 +1,10 @@
-#pragma once 
+// #pragma once 
 
 #include <iostream>
 #include <sstream>
-#include <SFML\Graphics.hpp>
-#include <SFML\Audio.hpp>
-#include "Header.h"
+#include <SFML/Graphics.hpp>
+#include <SFML/Audio.hpp>
+#include "header.h"
 
 
 namespace userCode{

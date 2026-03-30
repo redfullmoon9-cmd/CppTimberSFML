@@ -60,3 +60,4 @@ branch 좌우로 이동하거나 랜덤하게 아래로 내려오는 것 구현 
 	작성중인 소스튼 namespace userTimber로 변경 main은 userMain함수로. 
 	임포트한 Timber.cpp 책의 소스는 main은 bookTimber로 분리 하고  namespace는 bookTimber로 구분. 
 
+#include errors detected. Please update your includePath. Squiggles are disabled for this translation unit (/home/hotphotatos/cNcppGameDev/CppTimberSFML/source/TimberMain.cpp).
