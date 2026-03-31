@@ -3,11 +3,9 @@
 #include <iostream>
 #include <sstream>
 #include "header.h"
-#include "gameobject.h"
-#include "bee.h"
 
-
-namespace userCode{
+/* 26.03.31  refactoring 이전의 작업코드 */
+namespace refCode{
 
 	void updateBranches(int seed);
 	//const int NUM_BRANCHES = 6;  //heaer.hpp 
@@ -17,7 +15,7 @@ namespace userCode{
 	side branchPositions[NUM_BRANCHES];
 
 
-	int userMain() {
+	int refMain() {
 		//Vector2f test;
 		//RectangleShape shape; 
 
@@ -25,23 +23,30 @@ namespace userCode{
 		sf::RenderWindow r_window(vm, "Timber", sf::Style::Fullscreen);
 
 		//background
-		GameObject backGround= GameObject(BG_IMG, 0, 0, 0.0f);
+		sf::Texture textureBackGround;
+		textureBackGround.loadFromFile(BG_IMG);
+		sf::Sprite spriteBackGround;
+		spriteBackGround.setTexture(textureBackGround);
+		spriteBackGround.setPosition(0, 0);
+
+
 		//tree
-		GameObject textureTree = GameObject(TREE_IMG, 810, 0, 0.0f);
-	
+		sf::Texture textureTree;
+		textureTree.loadFromFile(TREE_IMG);
+		sf::Sprite spriteTree;
+		spriteTree.setTexture(textureTree);
+		spriteTree.setPosition(810, 0);
 
 		//Bee 
-		Bee bee = Bee(BEE_IMG, 0, 800, 0.0f, 45); 
-		/*sf::Texture textureBee;
+		sf::Texture textureBee;
 		textureBee.loadFromFile(BEE_IMG);
 		sf::Sprite spriteBee;
 		spriteBee.setTexture(textureBee);
 		spriteBee.setPosition(0, 800);
-		spriteBee.setRotation(45);*/
-		
+		spriteBee.setRotation(45);
 
-		//bool beeActive = false;
-		//float beeSpeed = 0.0f;
+		bool beeActive = false;
+		float beeSpeed = 0.0f;
 
 		//cloud
 		sf::Texture textureCloud;
@@ -162,20 +167,20 @@ namespace userCode{
 
 		bool acceptInput = false;
 
-		sf::SoundBuffer chopBuffer; 
-		chopBuffer.loadFromFile(CHOP_SOUND); 
-		sf::Sound chop; 
-		chop.setBuffer(chopBuffer); 
+		sf::SoundBuffer chopBuffer;
+		chopBuffer.loadFromFile(CHOP_SOUND);
+		sf::Sound chop;
+		chop.setBuffer(chopBuffer);
 
-		sf::SoundBuffer deathBuffer; 
-		deathBuffer.loadFromFile(DEATH_SOUND); 
-		sf::Sound death; 
-		death.setBuffer(deathBuffer); 
+		sf::SoundBuffer deathBuffer;
+		deathBuffer.loadFromFile(DEATH_SOUND);
+		sf::Sound death;
+		death.setBuffer(deathBuffer);
 
-		sf::SoundBuffer ootBuffer; 
+		sf::SoundBuffer ootBuffer;
 		ootBuffer.loadFromFile(OOT_SOUND);
-		sf::Sound OutOfTime; 
-		OutOfTime.setBuffer(ootBuffer); 
+		sf::Sound OutOfTime;
+		OutOfTime.setBuffer(ootBuffer);
 
 
 
@@ -231,7 +236,7 @@ namespace userCode{
 					logActive = true;
 
 					//play sound 
-					chop.play(); 
+					chop.play();
 
 					acceptInput = false;
 
@@ -264,7 +269,7 @@ namespace userCode{
 				//게임이 시작되자마자 타임바의 너비가 화면 너비(1920)를 넘어가버립니다.
 				// 시간이 1초 남았을 때가 되어서야 원래 의도했던 너비인 400이 됩니다.
 				//timeBar.setSize(sf::Vector2f(timeBarStartWidth * timeRemaining, timeBarHeight));
-				timeBar.setSize(sf::Vector2f(timeBarWidthPerSecond* timeRemaining, timeBarHeight));
+				timeBar.setSize(sf::Vector2f(timeBarWidthPerSecond * timeRemaining, timeBarHeight));
 
 				if (timeRemaining <= 0.0f) {
 					paused = true;
@@ -277,21 +282,21 @@ namespace userCode{
 				}
 
 				//set up the bee 
-				if (!bee.getActive()) {
+				if (!beeActive) {
 					srand((int)time(0));
-					bee.setSpeed(static_cast<float>((rand() % 200) + 200));
+					beeSpeed = static_cast<float>((rand() % 200) + 200);
 
 					srand((int)time(0) * 10);
 					float height = static_cast<float>((rand() % 500) + 500);
-					bee.SetPosition(2000, height); 
-					bee.setActive(true);
+					spriteBee.setPosition(2000, height);
+					beeActive = true;
 
 				}
 				else {
-					bee.GetSprite().setPosition(bee.GetSprite().getPosition().x - (bee.getSpeed() * dt.asSeconds()), 
-						bee.GetSprite().getPosition().y);
-					if (bee.GetSprite().getPosition().x < -100) {
-						bee.setActive(false);
+					spriteBee.setPosition(spriteBee.getPosition().x - (beeSpeed * dt.asSeconds()),
+						spriteBee.getPosition().y);
+					if (spriteBee.getPosition().x < -100) {
+						beeActive = false;
 					}
 				}
 
@@ -382,25 +387,25 @@ namespace userCode{
 				}
 
 				if (branchPositions[5] == playerSide) {
-					paused = true; 
-					acceptInput = false; 
+					paused = true;
+					acceptInput = false;
 
-					spriteRIP.setPosition(525, 760); 
+					spriteRIP.setPosition(525, 760);
 
-					spritePlayer.setPosition(2000, 660); 
-					messageText.setString("Squished!!"); 
+					spritePlayer.setPosition(2000, 660);
+					messageText.setString("Squished!!");
 
 					sf::FloatRect textRect = messageText.getLocalBounds();
 
-					messageText.setOrigin(textRect.left + textRect.width / 2.0f, textRect.top + textRect.height / 2.0f); 
-					messageText.setPosition(1920 / 2.0f, 1080 / 2.0f); 
+					messageText.setOrigin(textRect.left + textRect.width / 2.0f, textRect.top + textRect.height / 2.0f);
+					messageText.setPosition(1920 / 2.0f, 1080 / 2.0f);
 
 				}
 			}
 
 			/* draw screen */
 			r_window.clear();
-			r_window.draw(backGround.GetSprite());
+			r_window.draw(spriteBackGround);
 
 			r_window.draw(spriteCloud1);
 			r_window.draw(spriteCloud2);
@@ -410,7 +415,7 @@ namespace userCode{
 				r_window.draw(branches[i]);
 			}
 
-			r_window.draw(textureTree.GetSprite());
+			r_window.draw(spriteTree);
 
 			r_window.draw(spritePlayer);
 			r_window.draw(spriteAxe);
@@ -419,7 +424,7 @@ namespace userCode{
 
 
 			//draw spriteBee 
-			r_window.draw(bee.GetSprite());
+			r_window.draw(spriteBee);
 
 			//draw text 
 			r_window.draw(scoreText);

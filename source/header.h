@@ -2,6 +2,11 @@
 #ifndef __HEADER_H__
 #define __HEADER_H__
 
+#include <vector>
+#include <string>
+#include <SFML/Graphics.hpp>
+#include <SFML/Audio.hpp>
+
 //window와 linux 동시에 사용하도록 
 #ifdef _WIN32
     #define RESOURCE_PATH "D://cNcpp//CppTimberSFML//resources//"
