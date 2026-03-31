@@ -8,8 +8,13 @@ public:
 	~Bee(); 
 	float GetDegree() const { m_degree; }
 	void SetDegree( int degree); 
+	void SetActive(bool act);
+	bool GetActive() const { return isActive; }
 private: 
 	float m_degree{ 0 }; 
+
+protected: 
+	bool isActive = false;
 };
 
 #endif //__BEE_H__

@@ -22,10 +22,6 @@ void GameObject::SetPosition(int x, int y)
 	m_positionY = y; 
 }
 
-void GameObject::setActive(bool act)
-{
-	m_active = act; 
-}
 
 void GameObject::setSpeed(float speed)
 {

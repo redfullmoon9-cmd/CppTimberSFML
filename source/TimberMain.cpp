@@ -277,23 +277,44 @@ namespace userCode{
 				}
 
 				//set up the bee 
-				if (!bee.getActive()) {
+				if (!bee.GetActive()) {
+					//std::cout << " bee if active " << bee.getActive() << std::endl; 
 					srand((int)time(0));
 					bee.setSpeed(static_cast<float>((rand() % 200) + 200));
 
+					std::cout << " bee speed " << bee.getSpeed() << std::endl; 
 					srand((int)time(0) * 10);
 					float height = static_cast<float>((rand() % 500) + 500);
 					bee.SetPosition(2000, height); 
-					bee.setActive(true);
+					bee.SetActive(true);
 
 				}
 				else {
+					std::cout << " bee else active " << bee.GetActive() << std::endl; 
 					bee.GetSprite().setPosition(bee.GetSprite().getPosition().x - (bee.getSpeed() * dt.asSeconds()), 
 						bee.GetSprite().getPosition().y);
 					if (bee.GetSprite().getPosition().x < -100) {
-						bee.setActive(false);
+						bee.SetActive(false);
 					}
 				}
+				/*
+				if (!beeActive) {
+					srand((int)time(0));
+					beeSpeed = static_cast<float>((rand() % 200) + 200);
+
+					srand((int)time(0) * 10);
+					float height = static_cast<float>((rand() % 500) + 500);
+					spriteBee.setPosition(2000, height);
+					beeActive = true;
+
+				}
+				else {
+					spriteBee.setPosition(spriteBee.getPosition().x - (beeSpeed * dt.asSeconds()),
+						spriteBee.getPosition().y);
+					if (spriteBee.getPosition().x < -100) {
+						beeActive = false;
+					}
+				}*/
 
 				//cloud1Active
 				if (!cloud1Active) {
@@ -419,8 +440,9 @@ namespace userCode{
 
 
 			//draw spriteBee 
+			//r_window.draw(spriteBee);
 			r_window.draw(bee.GetSprite());
-
+							 
 			//draw text 
 			r_window.draw(scoreText);
 
