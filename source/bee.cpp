@@ -23,4 +23,17 @@ void Bee::SetActive(bool act)
 	isActive = act; 
 }
 
+// 클로드 제안 코드 
+void Bee::Update(float dt)
+{
+	if (!isActive) return; 
+	float newX = GetPostiotionX() - (getSpeed() *dt);
+	SetPosition(newX, GetPostiotionY()); 
+
+	if (newX < 100) {
+		isActive = false; 
+	}
+
+}
+
 

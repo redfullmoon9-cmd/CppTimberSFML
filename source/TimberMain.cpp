@@ -282,11 +282,12 @@ namespace userCode{
 				else { 
 				//현재 이코드에서는 통일성 문제.. bee 클래스 내에서 업데이트로 통일성 유지 하는 것이 좋은 방향. 
 
-					bee.GetSprite().setPosition(bee.GetSprite().getPosition().x 
+				/*	bee.GetSprite().setPosition(bee.GetSprite().getPosition().x 
 						- (bee.getSpeed() * dt.asSeconds()), bee.GetSprite().getPosition().y);
 					if (bee.GetSprite().getPosition().x < -100) {
 						bee.SetActive(false);
-					}
+					}*/
+					bee.Update(dt.asSeconds()); 
 				}
 				
 
