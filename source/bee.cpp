@@ -14,6 +14,7 @@ Bee::~Bee()
 void Bee::SetDegree(int degree)
 {
 	m_degree = degree; 
+	GetSprite().setRotation((float)m_degree); 
 
 }
 

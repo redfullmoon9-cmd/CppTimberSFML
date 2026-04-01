@@ -32,17 +32,7 @@ namespace userCode{
 
 		//Bee 
 		Bee bee = Bee(BEE_IMG, 0, 800, 0.0f, 45); 
-		/*sf::Texture textureBee;
-		textureBee.loadFromFile(BEE_IMG);
-		sf::Sprite spriteBee;
-		spriteBee.setTexture(textureBee);
-		spriteBee.setPosition(0, 800);
-		spriteBee.setRotation(45);*/
-		
-
-		//bool beeActive = false;
-		//float beeSpeed = 0.0f;
-
+	
 		//cloud
 		sf::Texture textureCloud;
 		textureCloud.loadFromFile(CLOUD_IMG);
@@ -277,44 +267,28 @@ namespace userCode{
 				}
 
 				//set up the bee 
+				//벌이 않움직이는 문제는 복사본 전달 문제.  getSprite() 반환값은 복사본 
+				//따라서 변경되지 않음. 레퍼런스 전달로 변경. 
 				if (!bee.GetActive()) {
-					//std::cout << " bee if active " << bee.getActive() << std::endl; 
 					srand((int)time(0));
 					bee.setSpeed(static_cast<float>((rand() % 200) + 200));
 
-					std::cout << " bee speed " << bee.getSpeed() << std::endl; 
 					srand((int)time(0) * 10);
 					float height = static_cast<float>((rand() % 500) + 500);
 					bee.SetPosition(2000, height); 
 					bee.SetActive(true);
 
 				}
-				else {
-					std::cout << " bee else active " << bee.GetActive() << std::endl; 
-					bee.GetSprite().setPosition(bee.GetSprite().getPosition().x - (bee.getSpeed() * dt.asSeconds()), 
-						bee.GetSprite().getPosition().y);
+				else { 
+				//현재 이코드에서는 통일성 문제.. bee 클래스 내에서 업데이트로 통일성 유지 하는 것이 좋은 방향. 
+
+					bee.GetSprite().setPosition(bee.GetSprite().getPosition().x 
+						- (bee.getSpeed() * dt.asSeconds()), bee.GetSprite().getPosition().y);
 					if (bee.GetSprite().getPosition().x < -100) {
 						bee.SetActive(false);
 					}
 				}
-				/*
-				if (!beeActive) {
-					srand((int)time(0));
-					beeSpeed = static_cast<float>((rand() % 200) + 200);
-
-					srand((int)time(0) * 10);
-					float height = static_cast<float>((rand() % 500) + 500);
-					spriteBee.setPosition(2000, height);
-					beeActive = true;
-
-				}
-				else {
-					spriteBee.setPosition(spriteBee.getPosition().x - (beeSpeed * dt.asSeconds()),
-						spriteBee.getPosition().y);
-					if (spriteBee.getPosition().x < -100) {
-						beeActive = false;
-					}
-				}*/
+				
 
 				//cloud1Active
 				if (!cloud1Active) {
