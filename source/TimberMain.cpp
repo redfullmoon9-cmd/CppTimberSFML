@@ -5,6 +5,7 @@
 #include "header.h"
 #include "gameobject.h"
 #include "bee.h"
+#include "cloud.h"
 
 
 namespace userCode{
@@ -18,44 +19,29 @@ namespace userCode{
 
 
 	int userMain() {
-		//Vector2f test;
-		//RectangleShape shape; 
-
 		sf::VideoMode vm(SCREEN_WIDTH, SCREEN_HEIGHT);
 		sf::RenderWindow r_window(vm, "Timber", sf::Style::Fullscreen);
 
 		//background
-		GameObject backGround= GameObject(BG_IMG, 0, 0, 0.0f);
+		GameObject backGround= GameObject(BG_IMG, 0, 0);
 		//tree
-		GameObject textureTree = GameObject(TREE_IMG, 810, 0, 0.0f);
+		GameObject textureTree = GameObject(TREE_IMG, 810, 0);
 	
-
 		//Bee 
-		Bee bee = Bee(BEE_IMG, 0, 800, 0.0f, 45); 
+		Bee bee = Bee(BEE_IMG, 0, 800, 0.0f); 
 	
 		//cloud
+		//Cloud cloud1 = Cloud(CLOUD_IMG, 0, 0, 100);
 		sf::Texture textureCloud;
-		textureCloud.loadFromFile(CLOUD_IMG);
+		textureCloud.loadFromFile(CLOUD_IMG);//이미지 못가져오는 문제. 
 
-		sf::Sprite spriteCloud1;
-		sf::Sprite spriteCloud2;
-		sf::Sprite spriteCloud3;
-
-		spriteCloud1.setTexture(textureCloud);
-		spriteCloud2.setTexture(textureCloud);
-		spriteCloud3.setTexture(textureCloud);
-
-		spriteCloud1.setPosition(0, 0);
-		spriteCloud2.setPosition(0, 250);
-		spriteCloud3.setPosition(0, 500);
-
-		bool cloud1Active = false;
-		bool cloud2Active = false;
-		bool cloud3Active = false;
-
-		float cloud1Speed = 0.0f;
-		float cloud2Speed = 0.0f;
-		float cloud3Speed = 0.0f;
+		std::vector<Cloud> clouds; 
+		clouds.emplace_back(textureCloud, 0, 0, 80.0f, 150); 
+		clouds.emplace_back(textureCloud, 0, 0, 100.0f, 150); 
+		clouds.emplace_back(textureCloud, 0, 0, 100.0f, 150); 
+		/*clouds.emplace_back(Cloud(CLOUD_IMG, 0, 0, 80.f, 150));
+		clouds.emplace_back(Cloud(CLOUD_IMG, 0, 250, 100.0f, 300));
+		clouds.emplace_back(Cloud(CLOUD_IMG, 0, 500, 50.f, 400));*/
 
 		sf::Clock clock;
 
@@ -269,78 +255,24 @@ namespace userCode{
 				//set up the bee 
 				//벌이 않움직이는 문제는 복사본 전달 문제.  getSprite() 반환값은 복사본 
 				//따라서 변경되지 않음. 레퍼런스 전달로 변경. 
-				if (!bee.GetActive()) {
+				if (!bee.getActive()) {
 					srand((int)time(0));
 					bee.setSpeed(static_cast<float>((rand() % 200) + 200));
 
 					srand((int)time(0) * 10);
-					float height = static_cast<float>((rand() % 500) + 500);
-					bee.SetPosition(2000, height); 
-					bee.SetActive(true);
+					float height = static_cast<float>((rand() % 600) + 500);
+					bee.setPosition(2000, height); 
+					bee.setActive(true);
 
 				}
 				else { 
 				//현재 이코드에서는 통일성 문제.. bee 클래스 내에서 업데이트로 통일성 유지 하는 것이 좋은 방향. 
-
-				/*	bee.GetSprite().setPosition(bee.GetSprite().getPosition().x 
-						- (bee.getSpeed() * dt.asSeconds()), bee.GetSprite().getPosition().y);
-					if (bee.GetSprite().getPosition().x < -100) {
-						bee.SetActive(false);
-					}*/
-					bee.Update(dt.asSeconds()); 
+					bee.update(dt.asSeconds()); 
 				}
 				
-
-				//cloud1Active
-				if (!cloud1Active) {
-					srand((int)time(0) * 10);
-					cloud1Speed = static_cast<float>((rand() % 200));
-
-					srand((int)time(0) * 10);
-					float height = static_cast<float>((rand() % 150));
-					spriteCloud1.setPosition(-200, height);
-					cloud1Active = true;
-				}
-				else {
-					spriteCloud1.setPosition(spriteCloud1.getPosition().x + (cloud1Speed * dt.asSeconds()),
-						spriteCloud1.getPosition().y);
-
-					if (spriteCloud1.getPosition().x > 1920) cloud1Active = false;
-				}
-
-				//cloud2Active
-				if (!cloud2Active) {
-					srand((int)time(0) * 20);
-					cloud2Speed = static_cast<float> ((rand() % 200));
-
-					srand((int)time(0) * 20);
-					float height = static_cast<float> ((rand() % 300) - 150);
-					spriteCloud2.setPosition(-200, height);
-					cloud2Active = true;
-				}
-				else {
-					spriteCloud2.setPosition(spriteCloud2.getPosition().x + (cloud2Speed * dt.asSeconds()),
-						spriteCloud2.getPosition().y);
-
-					if (spriteCloud2.getPosition().x > 1920) cloud2Active = false;
-				}
-
-
-				//cloud3Active
-				if (!cloud3Active) {
-					srand((int)time(0) * 30);
-					cloud3Speed = static_cast<float>((rand() % 200));
-
-					srand((int)time(0) * 30);
-					float height = static_cast<float>((rand() % 450) - 150);
-					spriteCloud3.setPosition(-200, height);
-					cloud3Active = true;
-				}
-				else {
-					spriteCloud3.setPosition(spriteCloud3.getPosition().x + (cloud3Speed * dt.asSeconds()),
-						spriteCloud3.getPosition().y);
-
-					if (spriteCloud3.getPosition().x > 1920) cloud3Active = false;
+				//cloud1.update(dt.asSeconds()); 
+				for (auto& cloud:clouds) {
+					cloud.update(dt.asSeconds()); 
 				}
 
 				//update score text 
@@ -396,17 +328,21 @@ namespace userCode{
 
 			/* draw screen */
 			r_window.clear();
-			r_window.draw(backGround.GetSprite());
+			r_window.draw(backGround.getSprite());
 
-			r_window.draw(spriteCloud1);
+			//r_window.draw(cloud1.getSprite()); 
+			for (auto& cloud : clouds) {
+				r_window.draw(cloud.getSprite()); 
+			}
+			/*r_window.draw(spriteCloud1);
 			r_window.draw(spriteCloud2);
-			r_window.draw(spriteCloud3);
+			r_window.draw(spriteCloud3);*/
 
 			for (int i = 0; i < NUM_BRANCHES; i++) {
 				r_window.draw(branches[i]);
 			}
 
-			r_window.draw(textureTree.GetSprite());
+			r_window.draw(textureTree.getSprite());
 
 			r_window.draw(spritePlayer);
 			r_window.draw(spriteAxe);
@@ -416,7 +352,7 @@ namespace userCode{
 
 			//draw spriteBee 
 			//r_window.draw(spriteBee);
-			r_window.draw(bee.GetSprite());
+			r_window.draw(bee.getSprite());
 							 
 			//draw text 
 			r_window.draw(scoreText);

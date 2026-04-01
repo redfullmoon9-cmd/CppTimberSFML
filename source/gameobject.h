@@ -6,15 +6,16 @@
 
 class GameObject {
 public: 
-	GameObject(const std::string& fileName, int posX, int posY, float speed);
+	GameObject(const std::string& fileName, int posX, int posY);
+	GameObject(const sf::Texture& texture, int posX, int posY, float speed); 
 	~GameObject();
-	void SetPosition(float x, float y); 
-	float GetPostiotionX() const { return m_positionX; }
-	float GetPostiotionY() const { return m_positionY; }
-	sf::Sprite& GetSprite() { return m_sprite;  } //복사본 반환 문제 
+	void setPosition(float x, float y); 
+	float getPostiotionX() const { return m_positionX; }
+	float getPostiotionY() const { return m_positionY; }
+	sf::Sprite& getSprite() { return m_sprite;  } //복사본 반환 문제 
 	void setSpeed(float speed); 
 	float getSpeed() const { return m_speed;  }
-
+	sf::Texture& getTexture() { return m_texture; }
 protected:
 	sf::Sprite m_sprite; 
 
