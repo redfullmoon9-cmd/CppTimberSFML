@@ -7,7 +7,7 @@ public:
 	Bee(const std::string& fileName, int posX, int posY, float speed);
 	Bee(const sf::Texture& texture, int posX, int posY, float speed); 
 	~Bee(); 
-	float setDegree() const { m_degree; }
+	float setDegree() const { return m_degree; }
 	void setDegree( int degree); 
 	void setActive(bool act);
 	bool getActive() const { return isActive; }
