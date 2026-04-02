@@ -4,10 +4,14 @@
 
 #include "header.h"
 
+
 class GameObject {
 public: 
 	GameObject(const std::string& fileName, int posX, int posY);
 	GameObject(const sf::Texture& texture, int posX, int posY, float speed); 
+	GameObject(GameObject&& other) noexcept; 
+	GameObject(const GameObject& other) ; 
+
 	~GameObject();
 	void setPosition(float x, float y); 
 	float getPostiotionX() const { return m_positionX; }

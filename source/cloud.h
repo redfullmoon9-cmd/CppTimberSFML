@@ -7,6 +7,7 @@ class Cloud :public GameObject {
 public: 
 	Cloud(const std::string& fileName, int posX, int posY, float speed, uint32_t height);
 	Cloud(const sf::Texture& texture, int posX, int posY, float speed, uint32_t height); 
+	
 	~Cloud();
 	void update(float dt); 
 	bool getActive() const { return isActive; }

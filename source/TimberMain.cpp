@@ -32,16 +32,17 @@ namespace userCode{
 	
 		//cloud
 		//Cloud cloud1 = Cloud(CLOUD_IMG, 0, 0, 100);
-		sf::Texture textureCloud;
-		textureCloud.loadFromFile(CLOUD_IMG);//이미지 못가져오는 문제. 
+		// sf::Texture textureCloud;
+		// textureCloud.loadFromFile(CLOUD_IMG);//이미지 못가져오는 문제. 
 
 		std::vector<Cloud> clouds; 
-		clouds.emplace_back(textureCloud, 0, 0, 80.0f, 150); 
-		clouds.emplace_back(textureCloud, 0, 0, 100.0f, 150); 
-		clouds.emplace_back(textureCloud, 0, 0, 100.0f, 150); 
-		/*clouds.emplace_back(Cloud(CLOUD_IMG, 0, 0, 80.f, 150));
+		clouds.reserve(3); 
+		// clouds.emplace_back(textureCloud, 0, 0, 80.0f, 150); 
+		// clouds.emplace_back(textureCloud, 0, 250, 100.0f, 300); 
+		// clouds.emplace_back(textureCloud, 0, 0, 100.0f, 500); 
+		clouds.emplace_back(Cloud(CLOUD_IMG, 0, 0, 80.f, 150));
 		clouds.emplace_back(Cloud(CLOUD_IMG, 0, 250, 100.0f, 300));
-		clouds.emplace_back(Cloud(CLOUD_IMG, 0, 500, 50.f, 400));*/
+		clouds.emplace_back(Cloud(CLOUD_IMG, 0, 500, 50.f, 500));
 
 		sf::Clock clock;
 

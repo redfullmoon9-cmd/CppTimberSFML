@@ -1,5 +1,6 @@
 #ifndef __BEE_H__
 #define __BEE_H__
+
 #include "header.h"
 #include "gameobject.h"
 class Bee :public GameObject {
