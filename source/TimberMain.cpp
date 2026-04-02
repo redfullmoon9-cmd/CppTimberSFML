@@ -236,6 +236,8 @@ namespace userCode{
 					messageText.setOrigin(textRect.left + textRect.width / 2.0f,
 						textRect.top + textRect.height / 2.0f);
 					messageText.setPosition(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2);
+					OutOfTime.play(); 
+
 				}
 
 				//set up the bee 
@@ -308,6 +310,7 @@ namespace userCode{
 
 					messageText.setOrigin(textRect.left + textRect.width / 2.0f, textRect.top + textRect.height / 2.0f); 
 					messageText.setPosition(1920 / 2.0f, 1080 / 2.0f); 
+					death.play(); 
 
 				}
 			}
@@ -349,7 +352,6 @@ namespace userCode{
 			r_window.display();
 		}
 		return 0;
-
 	}
 
 	void updateBranches(int seed) {
