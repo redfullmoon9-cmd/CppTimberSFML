@@ -31,8 +31,7 @@ private:
 	float m_positionX{ 0 };
 	float m_positionY{ 0 }; 
 	float m_speed{ 0 }; 
-	//std::vector<int> m_vecPosition; 
-	//bool m_active = false; 
+	
 };
 
 #endif //__GAMEOBJECT_H__
