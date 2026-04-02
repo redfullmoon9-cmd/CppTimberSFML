@@ -6,6 +6,7 @@
 #include "gameobject.h"
 #include "bee.h"
 #include "cloud.h"
+#include "sound_manager.h"
 
 
 namespace userCode{
@@ -132,22 +133,13 @@ namespace userCode{
 
 		bool acceptInput = false;
 
-		sf::SoundBuffer chopBuffer; 
-		chopBuffer.loadFromFile(CHOP_SOUND); 
-		sf::Sound chop; 
-		chop.setBuffer(chopBuffer); 
-
-		sf::SoundBuffer deathBuffer; 
-		deathBuffer.loadFromFile(DEATH_SOUND); 
-		sf::Sound death; 
-		death.setBuffer(deathBuffer); 
-
-		sf::SoundBuffer ootBuffer; 
-		ootBuffer.loadFromFile(OOT_SOUND);
-		sf::Sound OutOfTime; 
-		OutOfTime.setBuffer(ootBuffer); 
-
-
+		// 현재 - 불필요한 임시 객체 생성 후 복사
+		//SoundManager chop=SoundManager(CHOP_SOUND);
+		 
+		// 개선 - 직접 생성
+		SoundManager chop(CHOP_SOUND); 
+		SoundManager death(DEATH_SOUND); 
+		SoundManager OutOfTime(OOT_SOUND); 
 
 		/* main loop */
 		while (r_window.isOpen()) {
