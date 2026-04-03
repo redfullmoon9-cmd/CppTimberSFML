@@ -7,6 +7,7 @@
 #include "bee.h"
 #include "cloud.h"
 #include "sound_manager.h"
+#include "text_manager.h"
 
 
 namespace userCode{
@@ -57,21 +58,25 @@ namespace userCode{
 
 		/* draw text*/
 		int score = 0;
-		sf::Text messageText;
-		sf::Text scoreText;
-		sf::Font font;
-		font.loadFromFile(FONT_KOMIKAP);
-		messageText.setFont(font);
-		scoreText.setFont(font);
 
-		messageText.setString("Press enter to start");
-		scoreText.setString("Score=0");
+		TextManager messageText(FONT_KOMIKAP); 
+		TextManager scoreText(FONT_KOMIKAP);
 
-		messageText.setCharacterSize(75);
-		scoreText.setCharacterSize(100);
+		//sf::Text messageText;
+		//sf::Text scoreText;
+		//sf::Font font;
+		//font.loadFromFile(FONT_KOMIKAP);
+		//messageText.setFont(font);
+		//scoreText.setFont(font);
 
-		messageText.setFillColor(sf::Color::White);
-		scoreText.setFillColor(sf::Color::White);
+		//messageText.setString("Press enter to start");
+		//scoreText.setString("Score=0");
+
+		//messageText.setCharacterSize(75);
+		//scoreText.setCharacterSize(100);
+
+		//messageText.setFillColor(sf::Color::White);
+		//scoreText.setFillColor(sf::Color::White);
 
 		sf::FloatRect textRect = messageText.getGlobalBounds();
 		messageText.setOrigin(textRect.left + textRect.width / 2.0f, textRect.top + textRect.height / 2.0f);
