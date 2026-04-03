@@ -59,29 +59,12 @@ namespace userCode{
 		/* draw text*/
 		int score = 0;
 
-		TextManager messageText(FONT_KOMIKAP); 
-		TextManager scoreText(FONT_KOMIKAP);
+		TextManager messageText(FONT_KOMIKAP, "Press enter to start");
+		TextManager scoreText(FONT_KOMIKAP, "Score=0");
 
-		//sf::Text messageText;
-		//sf::Text scoreText;
-		//sf::Font font;
-		//font.loadFromFile(FONT_KOMIKAP);
-		//messageText.setFont(font);
-		//scoreText.setFont(font);
-
-		//messageText.setString("Press enter to start");
-		//scoreText.setString("Score=0");
-
-		//messageText.setCharacterSize(75);
-		//scoreText.setCharacterSize(100);
-
-		//messageText.setFillColor(sf::Color::White);
-		//scoreText.setFillColor(sf::Color::White);
-
-		sf::FloatRect textRect = messageText.getGlobalBounds();
-		messageText.setOrigin(textRect.left + textRect.width / 2.0f, textRect.top + textRect.height / 2.0f);
-		messageText.setPosition(SCREEN_WIDTH / 2.0F, SCREEN_HEIGHT / 2.0f);
-		scoreText.setPosition(20, 20);
+		messageText.setTextRect(); 
+		messageText.setPosition(SCREEN_WIDTH / 2.0F, SCREEN_HEIGHT / 2.0f, 1); 
+		scoreText.setPosition(20, 20, 0);
 
 		/* prepare branches*/
 		sf::Texture textureBranch;
