@@ -21,8 +21,11 @@ namespace userCode{
 
 
 	int userMain() {
-		sf::VideoMode vm(SCREEN_WIDTH, SCREEN_HEIGHT);
-		sf::RenderWindow r_window(vm, "Timber", sf::Style::Fullscreen);
+		//에러 발생해서 아래 코드로 비디오 모드 자동 검출 후 작동하게 
+		//sf::VideoMode vm(SCREEN_WIDTH, SCREEN_HEIGHT);
+		// sf::RenderWindow r_window(vm, "Timber", sf::Style::Fullscreen);
+		sf::VideoMode deskTopMode = sf::VideoMode::getDesktopMode();
+		sf::RenderWindow r_window(deskTopMode, "Timber", sf::Style::Default);
 
 		//background
 		GameObject backGround= GameObject(BG_IMG, 0, 0);

@@ -9,7 +9,7 @@ namespace refCode{ int refMain();  }
 
 int main() {
 	unsigned int choice = 0; 
-	//현 작성중인 
+	// 책의 코드를 OOP 방식으로 리팩토링 작업 중인 부분  
 	if (choice == 0) {
 		return userCode::userMain(); 
 	}
