@@ -59,12 +59,12 @@ namespace userCode{
 		/* draw text*/
 		int score = 0;
 
-		TextManager messageText(FONT_KOMIKAP, "Press enter to start");
-		TextManager scoreText(FONT_KOMIKAP, "Score=0");
+		TextManager messageText(FONT_KOMIKAP, "Press enter to start", 75, true);//중앙정렬 필요. 
+		messageText.setPosition(SCREEN_WIDTH / 2.0F, SCREEN_HEIGHT / 2.0f); 
 
-		messageText.setTextRect(); 
-		messageText.setPosition(SCREEN_WIDTH / 2.0F, SCREEN_HEIGHT / 2.0f, 1); 
-		scoreText.setPosition(20, 20, 0);
+		TextManager scoreText(FONT_KOMIKAP, "Score=0", 100, false);
+		scoreText.setPosition(20, 20);
+
 
 		/* prepare branches*/
 		sf::Texture textureBranch;
@@ -218,12 +218,8 @@ namespace userCode{
 
 				if (timeRemaining <= 0.0f) {
 					paused = true;
-					messageText.setString("Out of Time");
 
-					sf::FloatRect textRect = messageText.getLocalBounds();
-					messageText.setOrigin(textRect.left + textRect.width / 2.0f,
-						textRect.top + textRect.height / 2.0f);
-					messageText.setPosition(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2);
+					messageText.setStringCentered("Out of Time", SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2); 
 					OutOfTime.play(); 
 
 				}
@@ -290,14 +286,9 @@ namespace userCode{
 					acceptInput = false; 
 
 					spriteRIP.setPosition(525, 760); 
-
 					spritePlayer.setPosition(2000, 660); 
-					messageText.setString("Squished!!"); 
 
-					sf::FloatRect textRect = messageText.getLocalBounds();
-
-					messageText.setOrigin(textRect.left + textRect.width / 2.0f, textRect.top + textRect.height / 2.0f); 
-					messageText.setPosition(1920 / 2.0f, 1080 / 2.0f); 
+					messageText.setStringCentered("Squished!!", 1920 / 2.0f, 1080 / 2.0f); 
 					death.play(); 
 
 				}
@@ -328,13 +319,13 @@ namespace userCode{
 			r_window.draw(bee.getSprite());
 							 
 			//draw text 
-			r_window.draw(scoreText);
+			r_window.draw(scoreText.getText());
 
 			//draw time bar 
 			r_window.draw(timeBar);
 
 			if (paused) {
-				r_window.draw(messageText);
+				r_window.draw(messageText.getText());
 			}
 
 			r_window.display();

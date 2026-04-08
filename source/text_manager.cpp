@@ -1,12 +1,16 @@
 #include "text_manager.h"
 
-TextManager::TextManager(const std::string& fileName, const std::string& message)
+TextManager::TextManager(const std::string& fileName, const std::string& message, 
+	uint32_t characterSize, bool centered)
 {
 	m_font.loadFromFile(fileName); 
 	m_text.setFont(m_font); 
 	m_text.setString(message);
-	m_text.setCharacterSize(75); 
+	m_text.setCharacterSize(characterSize);
 	m_text.setFillColor(sf::Color::White); 
+	if (centered) {
+		centerOrigin(); 
+	}
 
 }
 
@@ -25,24 +29,32 @@ TextManager::TextManager(const TextManager&& other) noexcept
 	m_text.setFont(m_font); 
 }
 
-void TextManager::setTextRect()
+
+
+void TextManager::setPosition(float width, float height)
 {
-	m_textRect = m_text.getGlobalBounds(); 
+	m_text.setPosition(width,  height);
+	
 }
 
-void TextManager::setPosition(float width, float height, uint32_t mode)
+void TextManager::setString(const std::string& message)
 {
-	if (mode == 1) {
-		m_text.setOrigin(m_textRect.left + m_textRect.width / 2.0f, m_textRect.top + m_textRect.height / 2.0f); 
-
-	}
-	else {
-		m_text.setPosition(width,  height);
-
-	}
+	m_text.setString(message);
 }
 
-void TextManager::setString(const std::string& mString)
+void TextManager::setStringCentered(const std::string& message, float x, float y)
 {
-	m_text.setString(mString); 
+	m_text.setString(message); 
+	centerOrigin(); 
+	m_text.setPosition(x, y); 
+
+}
+
+//문자열에 따라 중앙을 잡는 기능. 
+void TextManager::centerOrigin()
+{
+	//문자열이 주어지면 크기를 측정
+	sf::FloatRect rect = m_text.getGlobalBounds(); 
+	// 측정된 크기에 따라서 중앙에 정렬. 
+	m_text.setOrigin(rect.left + rect.width / 2.0f, rect.top + rect.height / 2.0f); 
 }

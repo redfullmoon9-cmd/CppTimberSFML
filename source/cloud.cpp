@@ -3,7 +3,7 @@
 Cloud::Cloud(const std::string& fileName, int posX, int posY, float speed, uint32_t height)
 	: GameObject(fileName, posX, posY), m_cloudHeightMax(height)
 {
-	std::cout << "in cloud constructor" << std::endl; 
+	//std::cout << "in cloud constructor" << std::endl; 
 	setSpeed(speed); 
 	m_cloudHeightMin = m_cloudHeightMax - 150;
 
@@ -13,7 +13,7 @@ Cloud::Cloud(const sf::Texture& texture, int posX, int posY, float speed, uint32
 	: GameObject(texture, posX, posY, speed), m_cloudHeightMax(height)
 {
 	//getTexture()
-	std::cout << "in cloud texture constructor" << std::endl; 
+	//std::cout << "in cloud texture constructor" << std::endl; 
 	m_cloudHeightMin = m_cloudHeightMax - 150; 
 
 }
@@ -29,7 +29,7 @@ void Cloud::update(float dt) {
 		float height = static_cast<float>(rand() % (m_cloudHeightMax ));
 		setPosition(-200, height); 
 		isActive = true; 
-		std::cout << " update : posX " << getPostiotionX() << " posY" << getPostiotionY() << std::endl; 
+		//std::cout << " update : posX " << getPostiotionX() << " posY" << getPostiotionY() << std::endl; 
 
 	}
 	else {
